@@ -222,18 +222,18 @@ namespace Bind
 
         public Settings Clone()
         {
-            //return (Settings)this.MemberwiseClone();
-#if NET8_0_OR_GREATER
-            return System.Text.Json.JsonSerializer.Deserialize<Settings>(System.Text.Json.JsonSerializer.Serialize(this));
-#else
-            IFormatter formatter = new BinaryFormatter();
-            using (var stream = new MemoryStream())
-            {
-                formatter.Serialize(stream, this);
-                stream.Seek(0, SeekOrigin.Begin);
-                return (Settings)formatter.Deserialize(stream);
-            }
-#endif
+            return (Settings)this.MemberwiseClone();
+//#if NET8_0_OR_GREATER
+//            return System.Text.Json.JsonSerializer.Deserialize<Settings>(System.Text.Json.JsonSerializer.Serialize(this));
+//#else
+//            IFormatter formatter = new BinaryFormatter();
+//            using (var stream = new MemoryStream())
+//            {
+//                formatter.Serialize(stream, this);
+//                stream.Seek(0, SeekOrigin.Begin);
+//                return (Settings)formatter.Deserialize(stream);
+//            }
+//#endif
         }
     }
 }
