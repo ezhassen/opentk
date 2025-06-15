@@ -177,7 +177,7 @@ Target.create "Build"( fun _ ->
 Target.create "BuildTest" <| fun _ ->
     !!"tests/**/*.??proj"
     |> Seq.map(fun proj ->
-        DotNet.runWithDefaultOptions "netcoreapp3.1" proj "" |> string)
+        DotNet.runWithDefaultOptions "net9.0" proj "" |> string)
     |> Trace.logItems "TestBuild-Output: "
 
 // Copies binaries from default VS location to expected bin folder

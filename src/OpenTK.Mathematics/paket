@@ -5,16 +5,16 @@ description
 dependencies
     framework: netstandard2.1
         System.Runtime.CompilerServices.Unsafe >= 6.0.0
-    framework: netcoreapp3.1
+    framework: net9.0
         System.Runtime.CompilerServices.Unsafe >= 6.0.0
 
 files
     bin\Release\netstandard2.1\OpenTK.Mathematics.dll ==> lib\netstandard2.1
     bin\Release\netstandard2.1\OpenTK.Mathematics.xml ==> lib\netstandard2.1
     bin\Release\netstandard2.1\OpenTK.Mathematics.pdb ==> lib\netstandard2.1
-    bin\Release\netcoreapp3.1\OpenTK.Mathematics.dll ==> lib\netcoreapp3.1
-    bin\Release\netcoreapp3.1\OpenTK.Mathematics.xml ==> lib\netcoreapp3.1
-    bin\Release\netcoreapp3.1\OpenTK.Mathematics.pdb ==> lib\netcoreapp3.1
+    bin\Release\net9.0\OpenTK.Mathematics.dll ==> lib\net9.0
+    bin\Release\net9.0\OpenTK.Mathematics.xml ==> lib\net9.0
+    bin\Release\net9.0\OpenTK.Mathematics.pdb ==> lib\net9.0
     README.md ==> docs
     ..\..\.github\opentk-blue-hexagon.png ==> images
 

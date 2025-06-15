@@ -205,7 +205,9 @@ namespace Bind
         public bool DropMultipleTokens
         {
             get { return (Compatibility & Legacy.NoDropMultipleTokens) == Legacy.None; }
-            set { if (value)
+            set
+            {
+                if (value)
                 {
                     Compatibility |= Legacy.NoDropMultipleTokens;
                 }
@@ -220,6 +222,10 @@ namespace Bind
 
         public Settings Clone()
         {
+            //return (Settings)this.MemberwiseClone();
+#if NET8_0_OR_GREATER
+            return System.Text.Json.JsonSerializer.Deserialize<Settings>(System.Text.Json.JsonSerializer.Serialize(this));
+#else
             IFormatter formatter = new BinaryFormatter();
             using (var stream = new MemoryStream())
             {
@@ -227,6 +233,7 @@ namespace Bind
                 stream.Seek(0, SeekOrigin.Begin);
                 return (Settings)formatter.Deserialize(stream);
             }
+#endif
         }
     }
 }

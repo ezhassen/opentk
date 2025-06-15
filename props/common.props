@@ -1,11 +1,33 @@
 <Project>
-  <PropertyGroup>
-    <HasCommonProperties>true</HasCommonProperties>
-    <LangVersion Condition="$(MSBuildProjectExtension.EndsWith('.csproj'))">8.0</LangVersion>
-    <Copyright>Copyright (c) 2006 - 2018 Stefanos Apostolopoulos (stapostol@gmail.com) for the Open Toolkit library.</Copyright>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <OpenTKSolutionRoot>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)\..))</OpenTKSolutionRoot>
-  </PropertyGroup>
+	<PropertyGroup>
+		<HasCommonProperties>true</HasCommonProperties>
+
+		<!--<LangVersion Condition="$(MSBuildProjectExtension.EndsWith('.csproj'))">8.0</LangVersion>-->
+
+		<Copyright>Copyright (c) 2006 - 2018 Stefanos Apostolopoulos (stapostol@gmail.com) for the Open Toolkit library.</Copyright>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	</PropertyGroup>
+
+	<!--<Choose>
+		--><!--References for .Net Framework 4--><!--
+		<When Condition="$(TargetFramework.StartsWith('netstandard')) Or $(TargetFramework.StartsWith('net45')) Or $(TargetFramework.StartsWith('net472'))">
+			<LangVersion>8.0</LangVersion>
+		</When>
+		--><!--References for .Net Core --><!--
+		<Otherwise>
+			<LangVersion>12.0</LangVersion>
+		</Otherwise>
+	</Choose>-->
+	
+	<PropertyGroup Condition="$(MSBuildProjectExtension.EndsWith('.csproj')) And $(TargetFramework.StartsWith('netstandard'))">
+		<LangVersion>8.0</LangVersion>
+	</PropertyGroup>
+	
+	<PropertyGroup Condition="$(MSBuildProjectExtension.EndsWith('.csproj')) And $(TargetFramework.StartsWith('netstandard')) == 'false'">
+		<LangVersion>12.0</LangVersion>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<OpenTKSolutionRoot>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)\..))</OpenTKSolutionRoot>
+	</PropertyGroup>
 </Project>

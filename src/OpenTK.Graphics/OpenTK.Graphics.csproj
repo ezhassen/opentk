@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>netstandard2.1;net9.0</TargetFrameworks>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <RootNamespace>OpenTK.Graphics</RootNamespace>
     <SignAssembly>true</SignAssembly>
@@ -30,8 +30,8 @@
     <GLSpec Include="..\gl.xml" />
     <GeneratedFiles Include="ES11/ES11.cs;ES11/ES11Enums.cs;ES20/ES20.cs;ES20/ES20Enums.cs;ES30/ES30.cs;ES30/ES30Enums.cs;OpenGL2/GL.cs;OpenGL2/GLEnums.cs;OpenGL4/GL4.cs;OpenGL4/GL4Enums.cs" Exclude="**/Helper.cs" />
     <!-- We use this to use as an input for the Generate bindings step, this means that if the we (msbuild) rebuilds the Generator.Bind we will rerun the generator -->
-    <GeneratorExe Include="..\Generator.Bind\bin\$(Configuration)\netcoreapp3.1\Bind.exe" Condition="'$(OS)' == 'Windows_NT'" />
-    <GeneratorExe Include="..\Generator.Bind\bin\$(Configuration)\netcoreapp3.1\Bind" Condition="'$(OS)' != 'Windows_NT'" />
+    <GeneratorExe Include="..\Generator.Bind\bin\$(Configuration)\net9.0\Bind.exe" Condition="'$(OS)' == 'Windows_NT'" />
+    <GeneratorExe Include="..\Generator.Bind\bin\$(Configuration)\net9.0\Bind" Condition="'$(OS)' != 'Windows_NT'" />
   </ItemGroup>
 
   <!--  'DispatchToInnerBuilds' is so that this target is only run once in contrast to task that run after 'PreBuildEvent' which get run multiple times for each target framework  -->
@@ -46,7 +46,7 @@
   <Target Name="Generate bindings" DependsOnTargets="Download gl xml" BeforeTargets="DispatchToInnerBuilds;BeforeBuild">
 
     <!-- Build the Generator.Bind project directly, this is run before we resolve project references. -->
-    <MSBuild Projects="..\Generator.Bind\Generator.Bind.csproj" Targets="Build" Properties="TargetFramework=netcoreapp3.1" />
+    <MSBuild Projects="..\Generator.Bind\Generator.Bind.csproj" Targets="Build" Properties="TargetFramework=net9.0" />
 
     <!-- Use the solution presented here https://github.com/dotnet/msbuild/issues/2781#issuecomment-350118208 -->
     <!-- The idea is to set TargetFramework to "once" for all target frameworks, msbuild will not execute the same project with the same settings twice. -->
@@ -59,8 +59,8 @@
     <Message Text="Generating bindings..." Importance="high" />
 
     <!-- Run the exe directly to avoid dotnet rebuilding anything. -->
-    <Exec Command=".\src\Generator.Bind\bin\$(Configuration)\netcoreapp3.1\Bind.exe" WorkingDirectory="../../" Condition="'$(OS)' == 'Windows_NT'" />
-    <Exec Command=".\src\Generator.Bind\bin\$(Configuration)\netcoreapp3.1\Bind" WorkingDirectory="../../" Condition="'$(OS)' != 'Windows_NT'" />
+    <Exec Command=".\src\Generator.Bind\bin\$(Configuration)\net9.0\Bind.exe" WorkingDirectory="../../" Condition="'$(OS)' == 'Windows_NT'" />
+    <Exec Command=".\src\Generator.Bind\bin\$(Configuration)\net9.0\Bind" WorkingDirectory="../../" Condition="'$(OS)' != 'Windows_NT'" />
 
     <Message Text="Generated bindings!" Importance="high" />
 
@@ -78,8 +78,8 @@
     <!-- Some of the APIs that Cecil uses to sign assemblies is not supported on newer .net, so we can't use the rewriter to sign assemblies. -->
     <!-- This means we have to do it ourselves with sn.exe, but to do that we need to find where sn.exe lives, see Target GetSNPath. -->
     <!-- - Noggin_bops 2024-11-27 -->
-    <Exec Command=".\src\Generator.Rewrite\bin\$(Configuration)\netcoreapp3.1\Rewrite.exe -a ./src/OpenTK.Graphics/bin/$(Configuration)/$(TargetFramework)/OpenTK.Graphics.dll&#xD;&#xA;&quot;$(SNPath)&quot; -Ra ./src/OpenTK.Graphics/bin/$(Configuration)/$(TargetFramework)/OpenTK.Graphics.dll .\OpenTK.snk" WorkingDirectory="../../" StandardOutputImportance="high" StandardErrorImportance="high" Condition="'$(OS)' == 'Windows_NT'" />
-    <Exec Command=".\src\Generator.Rewrite\bin\$(Configuration)\netcoreapp3.1\Rewrite -a ./src/OpenTK.Graphics/bin/$(Configuration)/$(TargetFramework)/OpenTK.Graphics.dll&#xD;&#xA;&quot;$(SNPath)&quot; -Ra ./src/OpenTK.Graphics/bin/$(Configuration)/$(TargetFramework)/OpenTK.Graphics.dll .\OpenTK.snk" WorkingDirectory="../../" StandardOutputImportance="high" StandardErrorImportance="high" Condition="'$(OS)' != 'Windows_NT'" />
+    <Exec Command=".\src\Generator.Rewrite\bin\$(Configuration)\net9.0\Rewrite.exe -a ./src/OpenTK.Graphics/bin/$(Configuration)/$(TargetFramework)/OpenTK.Graphics.dll&#xD;&#xA;&quot;$(SNPath)&quot; -Ra ./src/OpenTK.Graphics/bin/$(Configuration)/$(TargetFramework)/OpenTK.Graphics.dll .\OpenTK.snk" WorkingDirectory="../../" StandardOutputImportance="high" StandardErrorImportance="high" Condition="'$(OS)' == 'Windows_NT'" />
+    <Exec Command=".\src\Generator.Rewrite\bin\$(Configuration)\net9.0\Rewrite -a ./src/OpenTK.Graphics/bin/$(Configuration)/$(TargetFramework)/OpenTK.Graphics.dll&#xD;&#xA;&quot;$(SNPath)&quot; -Ra ./src/OpenTK.Graphics/bin/$(Configuration)/$(TargetFramework)/OpenTK.Graphics.dll .\OpenTK.snk" WorkingDirectory="../../" StandardOutputImportance="high" StandardErrorImportance="high" Condition="'$(OS)' != 'Windows_NT'" />
     <Message Text="Rewrote src/OpenTK.Graphics/bin/$(Configuration)/$(TargetFramework)" Importance="high" />
   </Target>
 
