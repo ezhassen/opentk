@@ -836,3 +836,4 @@ auto/*
 src/OpenGL/*.*/
 gl.xml
 src/OpenGL/Extensions
+/temp
