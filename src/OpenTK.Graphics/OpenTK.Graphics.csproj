@@ -5,6 +5,7 @@
     <RootNamespace>OpenTK.Graphics</RootNamespace>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>../../OpenTK.snk</AssemblyOriginatorKeyFile>
+    <PackageId>OpenTKEzz.Graphics</PackageId>
     <DelaySign>true</DelaySign>
   </PropertyGroup>
 
@@ -33,7 +34,7 @@
     <GeneratorExe Include="..\Generator.Bind\bin\$(Configuration)\net9.0\Bind.exe" Condition="'$(OS)' == 'Windows_NT'" />
     <GeneratorExe Include="..\Generator.Bind\bin\$(Configuration)\net9.0\Bind" Condition="'$(OS)' != 'Windows_NT'" />
   </ItemGroup>
-
+  
   <!--  'DispatchToInnerBuilds' is so that this target is only run once in contrast to task that run after 'PreBuildEvent' which get run multiple times for each target framework  -->
   <!-- The downloaded gl.xml file isn't acually used by the build, it needs to be processed by Generator.Convert first, -->
   <!-- but we don't do this here as it's been a long time since the bindings where generated directly from gl.xml and it has diverged quite a bit. -->
