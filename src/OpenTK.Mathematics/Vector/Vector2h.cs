@@ -41,18 +41,18 @@ namespace OpenTK.Mathematics
         /// <summary>
         /// The X component of the Half2.
         /// </summary>
-        public Half X;
+        public TKHalf X;
 
         /// <summary>
         /// The Y component of the Half2.
         /// </summary>
-        public Half Y;
+        public TKHalf Y;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Vector2h"/> struct.
         /// </summary>
         /// <param name="value">The value that will initialize this instance.</param>
-        public Vector2h(Half value)
+        public Vector2h(TKHalf value)
         {
             X = value;
             Y = value;
@@ -64,8 +64,8 @@ namespace OpenTK.Mathematics
         /// <param name="value">The value that will initialize this instance.</param>
         public Vector2h(float value)
         {
-            X = new Half(value);
-            Y = new Half(value);
+            X = new TKHalf(value);
+            Y = new TKHalf(value);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace OpenTK.Mathematics
         /// </summary>
         /// <param name="x">The X component of the vector.</param>
         /// <param name="y">The Y component of the vector.</param>
-        public Vector2h(Half x, Half y)
+        public Vector2h(TKHalf x, TKHalf y)
         {
             X = x;
             Y = y;
@@ -86,8 +86,8 @@ namespace OpenTK.Mathematics
         /// <param name="y">The Y component of the vector.</param>
         public Vector2h(float x, float y)
         {
-            X = new Half(x);
-            Y = new Half(y);
+            X = new TKHalf(x);
+            Y = new TKHalf(y);
         }
 
         /// <summary>
@@ -98,8 +98,8 @@ namespace OpenTK.Mathematics
         /// <param name="throwOnError">Enable checks that will throw if the conversion result is not meaningful.</param>
         public Vector2h(float x, float y, bool throwOnError)
         {
-            X = new Half(x, throwOnError);
-            Y = new Half(y, throwOnError);
+            X = new TKHalf(x, throwOnError);
+            Y = new TKHalf(y, throwOnError);
         }
 
         /// <summary>
@@ -108,8 +108,8 @@ namespace OpenTK.Mathematics
         /// <param name="v">The <see cref="Vector2"/> to convert.</param>
         public Vector2h(Vector2 v)
         {
-            X = new Half(v.X);
-            Y = new Half(v.Y);
+            X = new TKHalf(v.X);
+            Y = new TKHalf(v.Y);
         }
 
         /// <summary>
@@ -119,8 +119,8 @@ namespace OpenTK.Mathematics
         /// <param name="throwOnError">Enable checks that will throw if the conversion result is not meaningful.</param>
         public Vector2h(Vector2 v, bool throwOnError)
         {
-            X = new Half(v.X, throwOnError);
-            Y = new Half(v.Y, throwOnError);
+            X = new TKHalf(v.X, throwOnError);
+            Y = new TKHalf(v.Y, throwOnError);
         }
 
         /// <summary>
@@ -129,8 +129,8 @@ namespace OpenTK.Mathematics
         /// <param name="v">The <see cref="Vector2"/> to convert.</param>
         public Vector2h(in Vector2 v)
         {
-            X = new Half(v.X);
-            Y = new Half(v.Y);
+            X = new TKHalf(v.X);
+            Y = new TKHalf(v.Y);
         }
 
         /// <summary>
@@ -140,8 +140,8 @@ namespace OpenTK.Mathematics
         /// <param name="throwOnError">Enable checks that will throw if the conversion result is not meaningful.</param>
         public Vector2h(in Vector2 v, bool throwOnError)
         {
-            X = new Half(v.X, throwOnError);
-            Y = new Half(v.Y, throwOnError);
+            X = new TKHalf(v.X, throwOnError);
+            Y = new TKHalf(v.Y, throwOnError);
         }
 
         /// <summary>
@@ -150,8 +150,8 @@ namespace OpenTK.Mathematics
         /// <param name="v">The <see cref="Vector2d"/> to convert.</param>
         public Vector2h(Vector2d v)
         {
-            X = new Half(v.X);
-            Y = new Half(v.Y);
+            X = new TKHalf(v.X);
+            Y = new TKHalf(v.Y);
         }
 
         /// <summary>
@@ -161,8 +161,8 @@ namespace OpenTK.Mathematics
         /// <param name="throwOnError">Enable checks that will throw if the conversion result is not meaningful.</param>
         public Vector2h(Vector2d v, bool throwOnError)
         {
-            X = new Half(v.X, throwOnError);
-            Y = new Half(v.Y, throwOnError);
+            X = new TKHalf(v.X, throwOnError);
+            Y = new TKHalf(v.Y, throwOnError);
         }
 
         /// <summary>
@@ -171,8 +171,8 @@ namespace OpenTK.Mathematics
         /// <param name="v">The <see cref="Vector2d"/> to convert.</param>
         public Vector2h(in Vector2d v)
         {
-            X = new Half(v.X);
-            Y = new Half(v.Y);
+            X = new TKHalf(v.X);
+            Y = new TKHalf(v.Y);
         }
 
         /// <summary>
@@ -182,8 +182,8 @@ namespace OpenTK.Mathematics
         /// <param name="throwOnError">Enable checks that will throw if the conversion result is not meaningful.</param>
         public Vector2h(in Vector2d v, bool throwOnError)
         {
-            X = new Half(v.X, throwOnError);
-            Y = new Half(v.Y, throwOnError);
+            X = new TKHalf(v.X, throwOnError);
+            Y = new TKHalf(v.Y, throwOnError);
         }
 
         /// <summary>
@@ -258,7 +258,7 @@ namespace OpenTK.Mathematics
         /// <param name="values">A tuple containing the component values.</param>
         /// <returns>A new instance of the <see cref="Vector2h"/> struct with the given component values.</returns>
         [Pure]
-        public static implicit operator Vector2h((Half X, Half Y) values)
+        public static implicit operator Vector2h((TKHalf X, TKHalf Y) values)
         {
             return new Vector2h(values.X, values.Y);
         }
@@ -297,8 +297,8 @@ namespace OpenTK.Mathematics
         /// <param name="context">The streaming context.</param>
         public Vector2h(SerializationInfo info, StreamingContext context)
         {
-            X = (Half)info.GetValue("X", typeof(Half));
-            Y = (Half)info.GetValue("Y", typeof(Half));
+            X = (TKHalf)info.GetValue("X", typeof(TKHalf));
+            Y = (TKHalf)info.GetValue("Y", typeof(TKHalf));
         }
 
         /// <inheritdoc/>
@@ -385,10 +385,10 @@ namespace OpenTK.Mathematics
         {
             byte[] result = new byte[SizeInBytes];
 
-            byte[] temp = Half.GetBytes(h.X);
+            byte[] temp = TKHalf.GetBytes(h.X);
             result[0] = temp[0];
             result[1] = temp[1];
-            temp = Half.GetBytes(h.Y);
+            temp = TKHalf.GetBytes(h.Y);
             result[2] = temp[0];
             result[3] = temp[1];
 
@@ -405,8 +405,8 @@ namespace OpenTK.Mathematics
         public static Vector2h FromBytes(byte[] value, int startIndex)
         {
             return new Vector2h(
-                Half.FromBytes(value, startIndex),
-                Half.FromBytes(value, startIndex + 2));
+                TKHalf.FromBytes(value, startIndex),
+                TKHalf.FromBytes(value, startIndex + 2));
         }
 
         /// <summary>
@@ -415,7 +415,7 @@ namespace OpenTK.Mathematics
         /// <param name="x">The X component of the vector.</param>
         /// <param name="y">The Y component of the vector.</param>
         [Pure]
-        public readonly void Deconstruct(out Half x, out Half y)
+        public readonly void Deconstruct(out TKHalf x, out TKHalf y)
         {
             x = X;
             y = Y;

@@ -79,7 +79,7 @@ namespace OpenTK.Mathematics
     /// </remarks>
     [Serializable]
     [StructLayout(LayoutKind.Sequential)]
-    public struct Half : ISerializable, IComparable<Half>, IFormattable, IEquatable<Half>
+    public struct TKHalf : ISerializable, IComparable<TKHalf>, IFormattable, IEquatable<TKHalf>
     {
         private ushort _bits;
 
@@ -104,11 +104,11 @@ namespace OpenTK.Mathematics
         public readonly bool IsNegativeInfinity => _bits == 64512;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Half"/> struct with <paramref name="f"/> being converted
+        /// Initializes a new instance of the <see cref="TKHalf"/> struct with <paramref name="f"/> being converted
         /// into a 16-bit half-precision floating-point number.
         /// </summary>
         /// <param name="f">32-bit single-precision floating-point number.</param>
-        public Half(float f)
+        public TKHalf(float f)
             : this()
         {
             unsafe
@@ -118,12 +118,12 @@ namespace OpenTK.Mathematics
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Half"/> struct with <paramref name="f"/> being converted
+        /// Initializes a new instance of the <see cref="TKHalf"/> struct with <paramref name="f"/> being converted
         /// into a 16-bit half-precision floating-point number.
         /// </summary>
         /// <param name="f">32-bit single-precision floating-point number.</param>
         /// <param name="throwOnError">Enable checks that will throw if the conversion result is not meaningful.</param>
-        public Half(float f, bool throwOnError)
+        public TKHalf(float f, bool throwOnError)
             : this(f)
         {
             if (throwOnError)
@@ -158,22 +158,22 @@ namespace OpenTK.Mathematics
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Half"/> struct with <paramref name="d"/> being converted
+        /// Initializes a new instance of the <see cref="TKHalf"/> struct with <paramref name="d"/> being converted
         /// into a 16-bit half-precision floating-point number.
         /// </summary>
         /// <param name="d">64-bit double-precision floating-point number.</param>
-        public Half(double d)
+        public TKHalf(double d)
             : this((float)d)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Half"/> struct with <paramref name="d"/> being converted
+        /// Initializes a new instance of the <see cref="TKHalf"/> struct with <paramref name="d"/> being converted
         /// into a 16-bit half-precision floating-point number.
         /// </summary>
         /// <param name="d">64-bit double-precision floating-point number.</param>
         /// <param name="throwOnError">Enable checks that will throw if the conversion result is not meaningful.</param>
-        public Half(double d, bool throwOnError)
+        public TKHalf(double d, bool throwOnError)
             : this((float)d, throwOnError)
         {
         }
@@ -330,12 +330,12 @@ namespace OpenTK.Mathematics
         /// The <see cref="float"/> value to convert.
         /// </param>
         /// <returns>
-        /// The <see cref="Half"/> result of the conversion.
+        /// The <see cref="TKHalf"/> result of the conversion.
         /// </returns>
         [Pure]
-        public static explicit operator Half(float f)
+        public static explicit operator TKHalf(float f)
         {
-            return new Half(f);
+            return new TKHalf(f);
         }
 
         /// <summary>
@@ -345,25 +345,25 @@ namespace OpenTK.Mathematics
         /// The <see cref="double"/> value to convert.
         /// </param>
         /// <returns>
-        /// The <see cref="Half"/> result of the conversion.
+        /// The <see cref="TKHalf"/> result of the conversion.
         /// </returns>
         [Pure]
-        public static explicit operator Half(double d)
+        public static explicit operator TKHalf(double d)
         {
-            return new Half(d);
+            return new TKHalf(d);
         }
 
         /// <summary>
         /// Converts a OpenTK.Half to a System.Single.
         /// </summary>
         /// <param name="h">
-        /// The <see cref="Half"/> value to convert.
+        /// The <see cref="TKHalf"/> value to convert.
         /// </param>
         /// <returns>
         /// The <see cref="float"/> result of the conversion.
         /// </returns>
         [Pure]
-        public static implicit operator float(Half h)
+        public static implicit operator float(TKHalf h)
         {
             return h.ToSingle();
         }
@@ -372,23 +372,23 @@ namespace OpenTK.Mathematics
         /// Converts a OpenTK.Half to a System.Double.
         /// </summary>
         /// <param name="h">
-        /// The <see cref="Half"/> value to convert.
+        /// The <see cref="TKHalf"/> value to convert.
         /// </param>
         /// <returns>
         /// The <see cref="double"/> result of the conversion.
         /// </returns>
         [Pure]
-        public static implicit operator double(Half h)
+        public static implicit operator double(TKHalf h)
         {
             return h.ToSingle();
         }
 
-        public static bool operator ==(Half left, Half right)
+        public static bool operator ==(TKHalf left, TKHalf right)
         {
             return left.Equals(right);
         }
 
-        public static bool operator !=(Half left, Half right)
+        public static bool operator !=(TKHalf left, TKHalf right)
         {
             return !(left == right);
         }
@@ -420,12 +420,12 @@ namespace OpenTK.Mathematics
 
 #pragma warning disable SA1611 // Element parameters should be documented
         /// <summary>
-        /// Initializes a new instance of the <see cref="Half"/> struct.
+        /// Initializes a new instance of the <see cref="TKHalf"/> struct.
         /// Used by <see cref="ISerializable"/> to deserialize the object.
         /// </summary>
-        /// <param name="info">The object that contains a serialized <see cref="Half"/> struct.</param>
+        /// <param name="info">The object that contains a serialized <see cref="TKHalf"/> struct.</param>
         /// <param name="context">The destination for this serialization. (This parameter is not used; specify null.).</param>
-        public Half(SerializationInfo info, StreamingContext context)
+        public TKHalf(SerializationInfo info, StreamingContext context)
         {
             _bits = (ushort)info.GetValue("bits", typeof(ushort));
         }
@@ -473,7 +473,7 @@ namespace OpenTK.Mathematics
         /// <param name="other">OpenTK.Half object to compare to this instance..</param>
         /// <returns>True, if other is equal to this instance; false otherwise.</returns>
         [Pure]
-        public readonly bool Equals(Half other)
+        public readonly bool Equals(TKHalf other)
         {
             const int maxUlps = 1;
 
@@ -526,7 +526,7 @@ namespace OpenTK.Mathematics
         ///  </para>
         /// </returns>
         [Pure]
-        public readonly int CompareTo(Half other)
+        public readonly int CompareTo(TKHalf other)
         {
             return ((float)this).CompareTo(other);
         }
@@ -570,9 +570,9 @@ namespace OpenTK.Mathematics
         /// <param name="s">String representation of the number to convert.</param>
         /// <returns>A new Half instance.</returns>
         [Pure]
-        public static Half Parse(string s)
+        public static TKHalf Parse(string s)
         {
-            return (Half)float.Parse(s);
+            return (TKHalf)float.Parse(s);
         }
 
         /// <summary>
@@ -583,9 +583,9 @@ namespace OpenTK.Mathematics
         /// <param name="provider">Culture-specific formatting information.</param>
         /// <returns>A new Half instance.</returns>
         [Pure]
-        public static Half Parse(string s, NumberStyles style, IFormatProvider provider)
+        public static TKHalf Parse(string s, NumberStyles style, IFormatProvider provider)
         {
-            return (Half)float.Parse(s, style, provider);
+            return (TKHalf)float.Parse(s, style, provider);
         }
 
         /// <summary>
@@ -595,10 +595,10 @@ namespace OpenTK.Mathematics
         /// <param name="result">The Half instance to write to.</param>
         /// <returns>Success.</returns>
         [Pure]
-        public static bool TryParse(string s, out Half result)
+        public static bool TryParse(string s, out TKHalf result)
         {
             var b = float.TryParse(s, out float f);
-            result = (Half)f;
+            result = (TKHalf)f;
             return b;
         }
 
@@ -611,10 +611,10 @@ namespace OpenTK.Mathematics
         /// <param name="result">The Half instance to write to.</param>
         /// <returns>Success.</returns>
         [Pure]
-        public static bool TryParse(string s, NumberStyles style, IFormatProvider provider, out Half result)
+        public static bool TryParse(string s, NumberStyles style, IFormatProvider provider, out TKHalf result)
         {
             var b = float.TryParse(s, style, provider, out float f);
-            result = (Half)f;
+            result = (TKHalf)f;
             return b;
         }
 
@@ -624,7 +624,7 @@ namespace OpenTK.Mathematics
         /// <param name="h">The Half to convert.</param>
         /// <returns>The input as byte array.</returns>
         [Pure]
-        public static byte[] GetBytes(Half h)
+        public static byte[] GetBytes(TKHalf h)
         {
             return BitConverter.GetBytes(h._bits);
         }
@@ -636,9 +636,9 @@ namespace OpenTK.Mathematics
         /// <param name="startIndex">The starting position within value.</param>
         /// <returns>A new Half instance.</returns>
         [Pure]
-        public static Half FromBytes(byte[] value, int startIndex)
+        public static TKHalf FromBytes(byte[] value, int startIndex)
         {
-            Half h;
+            TKHalf h;
             h._bits = BitConverter.ToUInt16(value, startIndex);
             return h;
         }

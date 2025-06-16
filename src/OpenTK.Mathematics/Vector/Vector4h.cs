@@ -41,22 +41,22 @@ namespace OpenTK.Mathematics
         /// <summary>
         /// The X component of the Half4.
         /// </summary>
-        public Half X;
+        public TKHalf X;
 
         /// <summary>
         /// The Y component of the Half4.
         /// </summary>
-        public Half Y;
+        public TKHalf Y;
 
         /// <summary>
         /// The Z component of the Half4.
         /// </summary>
-        public Half Z;
+        public TKHalf Z;
 
         /// <summary>
         /// The W component of the Half4.
         /// </summary>
-        public Half W;
+        public TKHalf W;
 
         /// <summary>
         /// Defines the size of the Vector4d struct in bytes.
@@ -67,7 +67,7 @@ namespace OpenTK.Mathematics
         /// Initializes a new instance of the <see cref="Vector4h"/> struct.
         /// </summary>
         /// <param name="value">The value that will initialize this instance.</param>
-        public Vector4h(Half value)
+        public Vector4h(TKHalf value)
         {
             X = value;
             Y = value;
@@ -81,10 +81,10 @@ namespace OpenTK.Mathematics
         /// <param name="value">The value that will initialize this instance.</param>
         public Vector4h(float value)
         {
-            X = new Half(value);
-            Y = new Half(value);
-            Z = new Half(value);
-            W = new Half(value);
+            X = new TKHalf(value);
+            Y = new TKHalf(value);
+            Z = new TKHalf(value);
+            W = new TKHalf(value);
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace OpenTK.Mathematics
         /// <param name="y">The Y component of the vector.</param>
         /// <param name="z">The Z component of the vector.</param>
         /// <param name="w">The W component of the vector.</param>
-        public Vector4h(Half x, Half y, Half z, Half w)
+        public Vector4h(TKHalf x, TKHalf y, TKHalf z, TKHalf w)
         {
             X = x;
             Y = y;
@@ -111,10 +111,10 @@ namespace OpenTK.Mathematics
         /// <param name="w">The W component of the vector.</param>
         public Vector4h(float x, float y, float z, float w)
         {
-            X = new Half(x);
-            Y = new Half(y);
-            Z = new Half(z);
-            W = new Half(w);
+            X = new TKHalf(x);
+            Y = new TKHalf(y);
+            Z = new TKHalf(z);
+            W = new TKHalf(w);
         }
 
         /// <summary>
@@ -127,10 +127,10 @@ namespace OpenTK.Mathematics
         /// <param name="throwOnError">Enable checks that will throw if the conversion result is not meaningful.</param>
         public Vector4h(float x, float y, float z, float w, bool throwOnError)
         {
-            X = new Half(x, throwOnError);
-            Y = new Half(y, throwOnError);
-            Z = new Half(z, throwOnError);
-            W = new Half(w, throwOnError);
+            X = new TKHalf(x, throwOnError);
+            Y = new TKHalf(y, throwOnError);
+            Z = new TKHalf(z, throwOnError);
+            W = new TKHalf(w, throwOnError);
         }
 
         /// <summary>
@@ -139,10 +139,10 @@ namespace OpenTK.Mathematics
         /// <param name="v">The <see cref="Vector4"/> to convert.</param>
         public Vector4h(Vector4 v)
         {
-            X = new Half(v.X);
-            Y = new Half(v.Y);
-            Z = new Half(v.Z);
-            W = new Half(v.W);
+            X = new TKHalf(v.X);
+            Y = new TKHalf(v.Y);
+            Z = new TKHalf(v.Z);
+            W = new TKHalf(v.W);
         }
 
         /// <summary>
@@ -152,10 +152,10 @@ namespace OpenTK.Mathematics
         /// <param name="throwOnError">Enable checks that will throw if the conversion result is not meaningful.</param>
         public Vector4h(Vector4 v, bool throwOnError)
         {
-            X = new Half(v.X, throwOnError);
-            Y = new Half(v.Y, throwOnError);
-            Z = new Half(v.Z, throwOnError);
-            W = new Half(v.W, throwOnError);
+            X = new TKHalf(v.X, throwOnError);
+            Y = new TKHalf(v.Y, throwOnError);
+            Z = new TKHalf(v.Z, throwOnError);
+            W = new TKHalf(v.W, throwOnError);
         }
 
         /// <summary>
@@ -164,10 +164,10 @@ namespace OpenTK.Mathematics
         /// <param name="v">The <see cref="Vector4"/> to convert.</param>
         public Vector4h(in Vector4 v)
         {
-            X = new Half(v.X);
-            Y = new Half(v.Y);
-            Z = new Half(v.Z);
-            W = new Half(v.W);
+            X = new TKHalf(v.X);
+            Y = new TKHalf(v.Y);
+            Z = new TKHalf(v.Z);
+            W = new TKHalf(v.W);
         }
 
         /// <summary>
@@ -177,10 +177,10 @@ namespace OpenTK.Mathematics
         /// <param name="throwOnError">Enable checks that will throw if the conversion result is not meaningful.</param>
         public Vector4h(in Vector4 v, bool throwOnError)
         {
-            X = new Half(v.X, throwOnError);
-            Y = new Half(v.Y, throwOnError);
-            Z = new Half(v.Z, throwOnError);
-            W = new Half(v.W, throwOnError);
+            X = new TKHalf(v.X, throwOnError);
+            Y = new TKHalf(v.Y, throwOnError);
+            Z = new TKHalf(v.Z, throwOnError);
+            W = new TKHalf(v.W, throwOnError);
         }
 
         /// <summary>
@@ -189,10 +189,10 @@ namespace OpenTK.Mathematics
         /// <param name="v">The <see cref="Vector4d"/> to convert.</param>
         public Vector4h(Vector4d v)
         {
-            X = new Half(v.X);
-            Y = new Half(v.Y);
-            Z = new Half(v.Z);
-            W = new Half(v.W);
+            X = new TKHalf(v.X);
+            Y = new TKHalf(v.Y);
+            Z = new TKHalf(v.Z);
+            W = new TKHalf(v.W);
         }
 
         /// <summary>
@@ -202,10 +202,10 @@ namespace OpenTK.Mathematics
         /// <param name="throwOnError">Enable checks that will throw if the conversion result is not meaningful.</param>
         public Vector4h(Vector4d v, bool throwOnError)
         {
-            X = new Half(v.X, throwOnError);
-            Y = new Half(v.Y, throwOnError);
-            Z = new Half(v.Z, throwOnError);
-            W = new Half(v.W, throwOnError);
+            X = new TKHalf(v.X, throwOnError);
+            Y = new TKHalf(v.Y, throwOnError);
+            Z = new TKHalf(v.Z, throwOnError);
+            W = new TKHalf(v.W, throwOnError);
         }
 
         /// <summary>
@@ -214,10 +214,10 @@ namespace OpenTK.Mathematics
         /// <param name="v">The <see cref="Vector4d"/> to convert.</param>
         public Vector4h(in Vector4d v)
         {
-            X = new Half(v.X);
-            Y = new Half(v.Y);
-            Z = new Half(v.Z);
-            W = new Half(v.W);
+            X = new TKHalf(v.X);
+            Y = new TKHalf(v.Y);
+            Z = new TKHalf(v.Z);
+            W = new TKHalf(v.W);
         }
 
         /// <summary>
@@ -227,10 +227,10 @@ namespace OpenTK.Mathematics
         /// <param name="throwOnError">Enable checks that will throw if the conversion result is not meaningful.</param>
         public Vector4h(in Vector4d v, bool throwOnError)
         {
-            X = new Half(v.X, throwOnError);
-            Y = new Half(v.Y, throwOnError);
-            Z = new Half(v.Z, throwOnError);
-            W = new Half(v.W, throwOnError);
+            X = new TKHalf(v.X, throwOnError);
+            Y = new TKHalf(v.Y, throwOnError);
+            Z = new TKHalf(v.Z, throwOnError);
+            W = new TKHalf(v.W, throwOnError);
         }
 
         /// <summary>
@@ -1273,7 +1273,7 @@ namespace OpenTK.Mathematics
         /// <param name="values">A tuple containing the component values.</param>
         /// <returns>A new instance of the <see cref="Vector4h"/> struct with the given component values.</returns>
         [Pure]
-        public static implicit operator Vector4h((Half X, Half Y, Half Z, Half W) values)
+        public static implicit operator Vector4h((TKHalf X, TKHalf Y, TKHalf Z, TKHalf W) values)
         {
             return new Vector4h(values.X, values.Y, values.Z, values.W);
         }
@@ -1307,10 +1307,10 @@ namespace OpenTK.Mathematics
         /// <param name="context">The streaming context.</param>
         public Vector4h(SerializationInfo info, StreamingContext context)
         {
-            X = (Half)info.GetValue("X", typeof(Half));
-            Y = (Half)info.GetValue("Y", typeof(Half));
-            Z = (Half)info.GetValue("Z", typeof(Half));
-            W = (Half)info.GetValue("W", typeof(Half));
+            X = (TKHalf)info.GetValue("X", typeof(TKHalf));
+            Y = (TKHalf)info.GetValue("Y", typeof(TKHalf));
+            Z = (TKHalf)info.GetValue("Z", typeof(TKHalf));
+            W = (TKHalf)info.GetValue("W", typeof(TKHalf));
         }
 
         /// <inheritdoc />
@@ -1407,16 +1407,16 @@ namespace OpenTK.Mathematics
         {
             byte[] result = new byte[SizeInBytes];
 
-            byte[] temp = Half.GetBytes(h.X);
+            byte[] temp = TKHalf.GetBytes(h.X);
             result[0] = temp[0];
             result[1] = temp[1];
-            temp = Half.GetBytes(h.Y);
+            temp = TKHalf.GetBytes(h.Y);
             result[2] = temp[0];
             result[3] = temp[1];
-            temp = Half.GetBytes(h.Z);
+            temp = TKHalf.GetBytes(h.Z);
             result[4] = temp[0];
             result[5] = temp[1];
-            temp = Half.GetBytes(h.W);
+            temp = TKHalf.GetBytes(h.W);
             result[6] = temp[0];
             result[7] = temp[1];
 
@@ -1433,10 +1433,10 @@ namespace OpenTK.Mathematics
         public static Vector4h FromBytes(byte[] value, int startIndex)
         {
             return new Vector4h(
-                Half.FromBytes(value, startIndex),
-                Half.FromBytes(value, startIndex + 2),
-                Half.FromBytes(value, startIndex + 4),
-                Half.FromBytes(value, startIndex + 6));
+                TKHalf.FromBytes(value, startIndex),
+                TKHalf.FromBytes(value, startIndex + 2),
+                TKHalf.FromBytes(value, startIndex + 4),
+                TKHalf.FromBytes(value, startIndex + 6));
         }
 
         /// <summary>
@@ -1447,7 +1447,7 @@ namespace OpenTK.Mathematics
         /// <param name="z">The Z component of the vector.</param>
         /// <param name="w">The W component of the vector.</param>
         [Pure]
-        public readonly void Deconstruct(out Half x, out Half y, out Half z, out Half w)
+        public readonly void Deconstruct(out TKHalf x, out TKHalf y, out TKHalf z, out TKHalf w)
         {
             x = X;
             y = Y;

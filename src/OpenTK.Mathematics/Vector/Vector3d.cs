@@ -1782,7 +1782,7 @@ namespace OpenTK.Mathematics
         [Pure]
         public static explicit operator Vector3h(Vector3d vec)
         {
-            return new Vector3h(new Half(vec.X), new Half(vec.Y), new Half(vec.Z));
+            return new Vector3h(new TKHalf(vec.X), new TKHalf(vec.Y), new TKHalf(vec.Z));
         }
 
         /// <summary>

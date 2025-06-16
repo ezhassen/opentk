@@ -1320,7 +1320,7 @@ namespace OpenTK.Mathematics
         [Pure]
         public static explicit operator Vector2h(Vector2d vec)
         {
-            return new Vector2h(new Half(vec.X), new Half(vec.Y));
+            return new Vector2h(new TKHalf(vec.X), new TKHalf(vec.Y));
         }
 
         /// <summary>

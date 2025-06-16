@@ -41,23 +41,23 @@ namespace OpenTK.Mathematics
         /// <summary>
         /// The X component of the Half3.
         /// </summary>
-        public Half X;
+        public TKHalf X;
 
         /// <summary>
         /// The Y component of the Half3.
         /// </summary>
-        public Half Y;
+        public TKHalf Y;
 
         /// <summary>
         /// The Z component of the Half3.
         /// </summary>
-        public Half Z;
+        public TKHalf Z;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Vector3h"/> struct.
         /// </summary>
         /// <param name="value">The value that will initialize this instance.</param>
-        public Vector3h(Half value)
+        public Vector3h(TKHalf value)
         {
             X = value;
             Y = value;
@@ -70,9 +70,9 @@ namespace OpenTK.Mathematics
         /// <param name="value">The value that will initialize this instance.</param>
         public Vector3h(float value)
         {
-            X = new Half(value);
-            Y = new Half(value);
-            Z = new Half(value);
+            X = new TKHalf(value);
+            Y = new TKHalf(value);
+            Z = new TKHalf(value);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace OpenTK.Mathematics
         /// <param name="x">The X component of the vector.</param>
         /// <param name="y">The Y component of the vector.</param>
         /// <param name="z">The Z component of the vector.</param>
-        public Vector3h(Half x, Half y, Half z)
+        public Vector3h(TKHalf x, TKHalf y, TKHalf z)
         {
             X = x;
             Y = y;
@@ -97,9 +97,9 @@ namespace OpenTK.Mathematics
         /// <param name="z">The Z component of the vector.</param>
         public Vector3h(float x, float y, float z)
         {
-            X = new Half(x);
-            Y = new Half(y);
-            Z = new Half(z);
+            X = new TKHalf(x);
+            Y = new TKHalf(y);
+            Z = new TKHalf(z);
         }
 
         /// <summary>
@@ -112,9 +112,9 @@ namespace OpenTK.Mathematics
         /// <param name="throwOnError">Enable checks that will throw if the conversion result is not meaningful.</param>
         public Vector3h(float x, float y, float z, bool throwOnError)
         {
-            X = new Half(x, throwOnError);
-            Y = new Half(y, throwOnError);
-            Z = new Half(z, throwOnError);
+            X = new TKHalf(x, throwOnError);
+            Y = new TKHalf(y, throwOnError);
+            Z = new TKHalf(z, throwOnError);
         }
 
         /// <summary>
@@ -123,9 +123,9 @@ namespace OpenTK.Mathematics
         /// <param name="v">The <see cref="Vector3"/> to convert.</param>
         public Vector3h(Vector3 v)
         {
-            X = new Half(v.X);
-            Y = new Half(v.Y);
-            Z = new Half(v.Z);
+            X = new TKHalf(v.X);
+            Y = new TKHalf(v.Y);
+            Z = new TKHalf(v.Z);
         }
 
         /// <summary>
@@ -135,9 +135,9 @@ namespace OpenTK.Mathematics
         /// <param name="throwOnError">Enable checks that will throw if the conversion result is not meaningful.</param>
         public Vector3h(Vector3 v, bool throwOnError)
         {
-            X = new Half(v.X, throwOnError);
-            Y = new Half(v.Y, throwOnError);
-            Z = new Half(v.Z, throwOnError);
+            X = new TKHalf(v.X, throwOnError);
+            Y = new TKHalf(v.Y, throwOnError);
+            Z = new TKHalf(v.Z, throwOnError);
         }
 
         /// <summary>
@@ -146,9 +146,9 @@ namespace OpenTK.Mathematics
         /// <param name="v">The <see cref="Vector3"/> to convert.</param>
         public Vector3h(in Vector3 v)
         {
-            X = new Half(v.X);
-            Y = new Half(v.Y);
-            Z = new Half(v.Z);
+            X = new TKHalf(v.X);
+            Y = new TKHalf(v.Y);
+            Z = new TKHalf(v.Z);
         }
 
         /// <summary>
@@ -158,9 +158,9 @@ namespace OpenTK.Mathematics
         /// <param name="throwOnError">Enable checks that will throw if the conversion result is not meaningful.</param>
         public Vector3h(in Vector3 v, bool throwOnError)
         {
-            X = new Half(v.X, throwOnError);
-            Y = new Half(v.Y, throwOnError);
-            Z = new Half(v.Z, throwOnError);
+            X = new TKHalf(v.X, throwOnError);
+            Y = new TKHalf(v.Y, throwOnError);
+            Z = new TKHalf(v.Z, throwOnError);
         }
 
         /// <summary>
@@ -169,9 +169,9 @@ namespace OpenTK.Mathematics
         /// <param name="v">The <see cref="Vector3d"/> to convert.</param>
         public Vector3h(Vector3d v)
         {
-            X = new Half(v.X);
-            Y = new Half(v.Y);
-            Z = new Half(v.Z);
+            X = new TKHalf(v.X);
+            Y = new TKHalf(v.Y);
+            Z = new TKHalf(v.Z);
         }
 
         /// <summary>
@@ -181,9 +181,9 @@ namespace OpenTK.Mathematics
         /// <param name="throwOnError">Enable checks that will throw if the conversion result is not meaningful.</param>
         public Vector3h(Vector3d v, bool throwOnError)
         {
-            X = new Half(v.X, throwOnError);
-            Y = new Half(v.Y, throwOnError);
-            Z = new Half(v.Z, throwOnError);
+            X = new TKHalf(v.X, throwOnError);
+            Y = new TKHalf(v.Y, throwOnError);
+            Z = new TKHalf(v.Z, throwOnError);
         }
 
         /// <summary>
@@ -192,9 +192,9 @@ namespace OpenTK.Mathematics
         /// <param name="v">The <see cref="Vector3d"/> to convert.</param>
         public Vector3h(in Vector3d v)
         {
-            X = new Half(v.X);
-            Y = new Half(v.Y);
-            Z = new Half(v.Z);
+            X = new TKHalf(v.X);
+            Y = new TKHalf(v.Y);
+            Z = new TKHalf(v.Z);
         }
 
         /// <summary>
@@ -204,9 +204,9 @@ namespace OpenTK.Mathematics
         /// <param name="throwOnError">Enable checks that will throw if the conversion result is not meaningful.</param>
         public Vector3h(in Vector3d v, bool throwOnError)
         {
-            X = new Half(v.X, throwOnError);
-            Y = new Half(v.Y, throwOnError);
-            Z = new Half(v.Z, throwOnError);
+            X = new TKHalf(v.X, throwOnError);
+            Y = new TKHalf(v.Y, throwOnError);
+            Z = new TKHalf(v.Z, throwOnError);
         }
 
         /// <summary>
@@ -426,7 +426,7 @@ namespace OpenTK.Mathematics
         /// <param name="values">A tuple containing the component values.</param>
         /// <returns>A new instance of the <see cref="Vector3h"/> struct with the given component values.</returns>
         [Pure]
-        public static implicit operator Vector3h((Half X, Half Y, Half Z) values)
+        public static implicit operator Vector3h((TKHalf X, TKHalf Y, TKHalf Z) values)
         {
             return new Vector3h(values.X, values.Y, values.Z);
         }
@@ -466,9 +466,9 @@ namespace OpenTK.Mathematics
         [Pure]
         public Vector3h(SerializationInfo info, StreamingContext context)
         {
-            X = (Half)info.GetValue("X", typeof(Half));
-            Y = (Half)info.GetValue("Y", typeof(Half));
-            Z = (Half)info.GetValue("Z", typeof(Half));
+            X = (TKHalf)info.GetValue("X", typeof(TKHalf));
+            Y = (TKHalf)info.GetValue("Y", typeof(TKHalf));
+            Z = (TKHalf)info.GetValue("Z", typeof(TKHalf));
         }
 
         /// <inheritdoc/>
@@ -560,13 +560,13 @@ namespace OpenTK.Mathematics
         {
             byte[] result = new byte[SizeInBytes];
 
-            byte[] temp = Half.GetBytes(h.X);
+            byte[] temp = TKHalf.GetBytes(h.X);
             result[0] = temp[0];
             result[1] = temp[1];
-            temp = Half.GetBytes(h.Y);
+            temp = TKHalf.GetBytes(h.Y);
             result[2] = temp[0];
             result[3] = temp[1];
-            temp = Half.GetBytes(h.Z);
+            temp = TKHalf.GetBytes(h.Z);
             result[4] = temp[0];
             result[5] = temp[1];
 
@@ -583,9 +583,9 @@ namespace OpenTK.Mathematics
         public static Vector3h FromBytes(byte[] value, int startIndex)
         {
             return new Vector3h(
-                Half.FromBytes(value, startIndex),
-                Half.FromBytes(value, startIndex + 2),
-                Half.FromBytes(value, startIndex + 4));
+                TKHalf.FromBytes(value, startIndex),
+                TKHalf.FromBytes(value, startIndex + 2),
+                TKHalf.FromBytes(value, startIndex + 4));
         }
 
         /// <summary>
@@ -595,7 +595,7 @@ namespace OpenTK.Mathematics
         /// <param name="y">The Y component of the vector.</param>
         /// <param name="z">The Z component of the vector.</param>
         [Pure]
-        public readonly void Deconstruct(out Half x, out Half y, out Half z)
+        public readonly void Deconstruct(out TKHalf x, out TKHalf y, out TKHalf z)
         {
             x = X;
             y = Y;
