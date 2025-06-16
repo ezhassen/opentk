@@ -1,3 +1,6 @@
+## 4.9.5
+Use net9.0 instead of netcoreapp3.1 (For Custom Build)
+
 ## 4.9.4
 
 * BREAKING: Made `Matrix3/4.CreateFromQuaternion` and `Matrix3x4/4x3.CreateFromQuaternion` produce idential results for non-normalized quaternions. (@NogginBops)
