@@ -5,6 +5,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>../../OpenTK.snk</AssemblyOriginatorKeyFile>
+    <PackageId>OpenTKEzz.Windowing.Common</PackageId>
   </PropertyGroup>
 
   <ItemGroup>

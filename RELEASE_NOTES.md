@@ -1,4 +1,4 @@
-## 4.9.6
+## 4.9.8
 Use net9.0 instead of netcoreapp3.1 (For Custom Build)
 
 ## 4.9.4

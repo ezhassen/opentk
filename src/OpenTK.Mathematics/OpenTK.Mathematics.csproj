@@ -4,6 +4,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Deterministic>true</Deterministic>
     <RootNamespace>OpenTK.Mathematics</RootNamespace>
+    <PackageId>OpenTKEzz.Mathematics</PackageId>
   </PropertyGroup>
 
   <PropertyGroup>

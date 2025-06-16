@@ -4,6 +4,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Deterministic>true</Deterministic>
     <LangVersion>latest</LangVersion>
+    <PackageId>OpenTK.Audio.OpenAL</PackageId>
   </PropertyGroup>
 
   <PropertyGroup>

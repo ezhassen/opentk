@@ -7,6 +7,7 @@
     <AssemblyName>Rewrite</AssemblyName>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>../../OpenTK.snk</AssemblyOriginatorKeyFile>
+    <PackageId>OpenTKEzz.Rewrite</PackageId>
   </PropertyGroup>
 
   <ItemGroup>

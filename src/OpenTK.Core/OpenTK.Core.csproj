@@ -3,6 +3,7 @@
     <TargetFrameworks>netstandard2.1</TargetFrameworks>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <RootNamespace>OpenTK.Core</RootNamespace>
+    <PackageId>OpenTKEzz.Core</PackageId>
   </PropertyGroup>
 
   <PropertyGroup>
