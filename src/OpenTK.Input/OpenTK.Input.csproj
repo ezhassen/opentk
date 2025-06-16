@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net9.0;net6.0;netstandard2.1;net462</TargetFrameworks>
     <Deterministic>true</Deterministic>
     <RootNamespace>OpenTK.Input</RootNamespace>
     <PackageId>OpenTKEzz.Input</PackageId>
