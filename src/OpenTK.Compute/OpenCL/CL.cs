@@ -4,6 +4,9 @@ using OpenTK.Compute.Native;
 
 namespace OpenTK.Compute.OpenCL
 {
+    /// <summary>
+    /// OpenCL.
+    /// </summary>
     public class CL : CLBase
     {
         static CL()
@@ -14,6 +17,9 @@ namespace OpenTK.Compute.OpenCL
         private const string LibName = "opencl";
         private const CallingConvention CallingConvention = System.Runtime.InteropServices.CallingConvention.Cdecl;
 
+        /// <summary>
+        /// ClEventCallback.
+        /// </summary>
         public delegate void ClEventCallback(IntPtr waitEvent, IntPtr userData);
 
         #region Platform API
@@ -297,6 +303,7 @@ namespace OpenTK.Compute.OpenCL
             }
         }
 
+#if !NETFRAMEWORK
         /// <summary>
         /// Introduced in OpenCL 1.0.
         /// </summary>
@@ -310,6 +317,7 @@ namespace OpenTK.Compute.OpenCL
                 return new CLBuffer(buffer);
             }
         }
+#endif
 
         /// <summary>
         /// Introduced in OpenCL 1.1.
@@ -1033,6 +1041,7 @@ namespace OpenTK.Compute.OpenCL
             }
         }
 
+#if !NETFRAMEWORK
         /// <summary>
         /// Introduced in OpenCL 1.0.
         /// </summary>
@@ -1049,6 +1058,7 @@ namespace OpenTK.Compute.OpenCL
                 return resultCode;
             }
         }
+#endif
 
         /// <summary>
         /// Introduced in OpenCL 1.1.
@@ -1079,6 +1089,7 @@ namespace OpenTK.Compute.OpenCL
             }
         }
 
+#if !NETFRAMEWORK
         /// <summary>
         /// Introduced in OpenCL 1.1.
         /// </summary>
@@ -1097,6 +1108,7 @@ namespace OpenTK.Compute.OpenCL
                     eventWaitList, out @event);
             }
         }
+#endif
 
         /// <summary>
         /// Introduced in OpenCL 1.0.
@@ -1126,6 +1138,7 @@ namespace OpenTK.Compute.OpenCL
             }
         }
 
+#if !NETFRAMEWORK
         /// <summary>
         /// Introduced in OpenCL 1.0.
         /// </summary>
@@ -1143,6 +1156,7 @@ namespace OpenTK.Compute.OpenCL
                 return resultCode;
             }
         }
+#endif
 
         /// <summary>
         /// Introduced in OpenCL 1.1.
@@ -1173,6 +1187,7 @@ namespace OpenTK.Compute.OpenCL
             }
         }
 
+#if !NETFRAMEWORK
         /// <summary>
         /// Introduced in OpenCL 1.1.
         /// </summary>
@@ -1191,6 +1206,7 @@ namespace OpenTK.Compute.OpenCL
                     eventWaitList, out @event);
             }
         }
+#endif
 
         /// <summary>
         /// Introduced in OpenCL 1.2.

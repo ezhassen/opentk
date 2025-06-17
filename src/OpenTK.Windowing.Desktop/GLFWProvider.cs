@@ -115,6 +115,7 @@ namespace OpenTK.Windowing.Desktop
                 // If OPENTK_4_USE_WAYLAND=0 and XDG_SESSION_TYPE="wayland" we want to try using X11,
                 // if one of these environment variables are undefined we don't want to do anything.
                 // - Noggin_bops 2024-03-05
+#if NET || NETSTANDARD
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                 {
                     if (HonorOpenTK4UseWayland)
@@ -127,6 +128,7 @@ namespace OpenTK.Windowing.Desktop
                         }
                     }
                 }
+#endif
 
                 GLFW.SetErrorCallback(ErrorCallback);
                 GLFW.Init();

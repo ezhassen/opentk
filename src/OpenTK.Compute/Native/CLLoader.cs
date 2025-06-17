@@ -19,6 +19,7 @@ namespace OpenTK.Compute.Native
             RegisterDllResolver();
         }
 
+#if NET
         internal static void RegisterDllResolver()
         {
             if (RegisteredResolver == false)
@@ -40,5 +41,38 @@ namespace OpenTK.Compute.Native
 
             return libHandle;
         }
+#endif
+
+#if NETFRAMEWORK || NETSTANDARD
+        internal static void RegisterDllResolver()
+        {
+            if (RegisteredResolver == false)
+            {
+                // For .NET Framework, we use AppDomain.CurrentDomain.AssemblyResolve
+                AppDomain.CurrentDomain.AssemblyResolve += (sender, args) =>
+                {
+                    if (args.Name.StartsWith(typeof(CLLoader).Assembly.GetName().Name))
+                    {
+                        string libName = CLLibraryNameContainer.GetLibraryName();
+                        try
+                        {
+                            LoadLibrary(libName);
+                        }
+                        catch (DllNotFoundException)
+                        {
+                            throw new DllNotFoundException(
+                                $"Could not load the dll '{libName}'.");
+                        }
+                    }
+                    return null;
+                };
+                RegisteredResolver = true;
+            }
+        }
+
+        [DllImport("kernel32.dll")]
+        private static extern IntPtr LoadLibrary(string dllToLoad);
+#endif
+
     }
 }

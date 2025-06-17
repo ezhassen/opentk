@@ -5,7 +5,7 @@
 		<!--No image !! cannot pack-->
 		<!--<PackageIcon>images/opentk-blue-hexagon.png</PackageIcon>-->
 		<PackageLicenseUrl>https://licenses.nuget.org/MIT</PackageLicenseUrl>
-		<PackageReleaseNotes>Initial 4.9.8 release for .net9.0.</PackageReleaseNotes>
+		<PackageReleaseNotes>Initial 4.9.9 release for .net9.0.</PackageReleaseNotes>
 		<PackageTags>opentk;opengl;cross-platform;openal;csharp;fsharp;vb;dotnet;mono;graphics;game;scientific;science;3d;2d;math;input;gamepad;joystick</PackageTags>
 		<PackageProjectUrl>https://github.com/ezhassen/opentk</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/ezhassen/opentk</RepositoryUrl>
@@ -15,7 +15,7 @@
 		<IncludeSource>true</IncludeSource>
 		<!-- The build system will override this version with the actual version. See build.fs. -->
 		<!-- - Noggin_bops 2024-12-10 -->
-		<Version>4.9.8</Version>
+		<Version>4.9.9</Version>
 	
 </PropertyGroup>
 	<Import Project="common.props" Condition="!$(HasCommonProperties)"/>

@@ -234,7 +234,15 @@ namespace OpenTK.Windowing.Desktop
             // 8 is a good compromise between accuracy and power consumption
             // according to: https://chromium-review.googlesource.com/c/chromium/src/+/2265402
             const int TIME_PERIOD = 8;
+#if NETFRAMEWORK
+            // Make this thread only run on one core, avoiding timing issues with context switching
+            SetThreadAffinityMask(GetCurrentThread(), new IntPtr(1));
 
+            // Make Thread.Sleep more accurate.
+            // FIXME: We probably only care about this if we are not event driven.
+            timeBeginPeriod(TIME_PERIOD);
+            ExpectedSchedulerPeriod = TIME_PERIOD;
+#else
             // We do this before OnLoad so that users have some way to affect these settings in OnLoad if they need to.
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
@@ -246,24 +254,38 @@ namespace OpenTK.Windowing.Desktop
                 timeBeginPeriod(TIME_PERIOD);
                 ExpectedSchedulerPeriod = TIME_PERIOD;
             }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ||
-                    // FIXME: We assume FreeBSD is able to do 1ms sleeps as well.
-                    RuntimeInformation.IsOSPlatform(OSPlatform.FreeBSD))
+#if NETSTANDARD
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 // Seems like `Thread.Sleep` can accurately sleep for 1ms on Ubuntu 20.04
                 // - 2023-07-13 Noggin_bops
                 ExpectedSchedulerPeriod = 1;
             }
+#else
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ||
+                                   // FIXME: We assume FreeBSD is able to do 1ms sleeps as well.
+                                   RuntimeInformation.IsOSPlatform(OSPlatform.FreeBSD))
+            {
+                // Seems like `Thread.Sleep` can accurately sleep for 1ms on Ubuntu 20.04
+                // - 2023-07-13 Noggin_bops
+                ExpectedSchedulerPeriod = 1;
+            }
+#endif
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
                 // Seems like `Thread.Slepp` can accurately sleep for 1ms on a 2018 Macbook Air running macos 12.3.1.
                 // - 2023-07-13 Noggin_bops
                 ExpectedSchedulerPeriod = 1;
             }
+#endif
 
             // Make sure that the gl contexts is current for OnLoad and the initial OnResize
             Context?.MakeCurrent();
-
+#if NETFRAMEWORK
+            _win32WndProc = new Win32WindowProc(WindowPtr);
+            _win32WndProc.OnModalSizeMoveBegin += Win32_OnModalSizeMoveBegin;
+            _win32WndProc.OnModalSizeMoveEnd += Win32_OnModalSizeMoveEnd;
+#else
             // Hook the Win32 window message handler and wire up related events
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) && _win32SuspendTimerOnDrag)
             {
@@ -271,6 +293,7 @@ namespace OpenTK.Windowing.Desktop
                 _win32WndProc.OnModalSizeMoveBegin += Win32_OnModalSizeMoveBegin;
                 _win32WndProc.OnModalSizeMoveEnd += Win32_OnModalSizeMoveEnd;
             }
+#endif
 
             // Send the OnLoad event, to load all user code.
             OnLoad();
@@ -342,11 +365,14 @@ namespace OpenTK.Windowing.Desktop
             }
 
             OnUnload();
-
+#if NETFRAMEWORK
+            timeEndPeriod(TIME_PERIOD);
+#else
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 timeEndPeriod(TIME_PERIOD);
             }
+#endif
         }
 
         /// <summary>
@@ -457,6 +483,13 @@ namespace OpenTK.Windowing.Desktop
                 return;
             }
 
+#if NETFRAMEWORK
+
+            _win32WndProc.OnModalSizeMoveBegin -= Win32_OnModalSizeMoveBegin;
+            _win32WndProc.OnModalSizeMoveEnd -= Win32_OnModalSizeMoveEnd;
+            _win32WndProc.Dispose();
+            _win32WndProc = null;
+#else
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) && _win32WndProc != null)
             {
                 _win32WndProc.OnModalSizeMoveBegin -= Win32_OnModalSizeMoveBegin;
@@ -464,6 +497,7 @@ namespace OpenTK.Windowing.Desktop
                 _win32WndProc.Dispose();
                 _win32WndProc = null;
             }
+#endif
 
             GC.SuppressFinalize(this);
             _isDisposed = true;

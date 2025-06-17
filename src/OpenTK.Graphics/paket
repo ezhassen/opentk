@@ -9,6 +9,15 @@ dependencies
     framework: net9.0
         OpenTK.Core ~> #VERSION#
         OpenTK.Mathematics ~> #VERSION#
+    framework: net8.0
+        OpenTK.Core ~> #VERSION#
+        OpenTK.Mathematics ~> #VERSION#
+    framework: net6.0
+        OpenTK.Core ~> #VERSION#
+        OpenTK.Mathematics ~> #VERSION#
+    framework: net462
+        OpenTK.Core ~> #VERSION#
+        OpenTK.Mathematics ~> #VERSION#
 files
     bin\Release\netstandard2.1\OpenTK.Graphics.dll ==> lib\netstandard2.1
     bin\Release\netstandard2.1\OpenTK.Graphics.xml ==> lib\netstandard2.1
@@ -16,6 +25,15 @@ files
     bin\Release\net9.0\OpenTK.Graphics.dll ==> lib\net9.0
     bin\Release\net9.0\OpenTK.Graphics.xml ==> lib\net9.0
     bin\Release\net9.0\OpenTK.Graphics.pdb ==> lib\net9.0
+    bin\Release\net8.0\OpenTK.Graphics.dll ==> lib\net8.0
+    bin\Release\net8.0\OpenTK.Graphics.xml ==> lib\net8.0
+    bin\Release\net8.0\OpenTK.Graphics.pdb ==> lib\net8.0
+    bin\Release\net6.0\OpenTK.Graphics.dll ==> lib\net6.0
+    bin\Release\net6.0\OpenTK.Graphics.xml ==> lib\net6.0
+    bin\Release\net6.0\OpenTK.Graphics.pdb ==> lib\net6.0
+    bin\Release\net462\OpenTK.Graphics.dll ==> lib\net462
+    bin\Release\net462\OpenTK.Graphics.xml ==> lib\net462
+    bin\Release\net462\OpenTK.Graphics.pdb ==> lib\net462
     README.md ==> docs
     ..\..\.github\opentk-blue-hexagon.png ==> images
 

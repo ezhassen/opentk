@@ -10,6 +10,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 
 namespace OpenTK.Mathematics
 {
@@ -1015,13 +1016,19 @@ namespace OpenTK.Mathematics
         public static bool ApproximatelyEqual(float a, float b, int maxDeltaBits)
         {
             // we use longs here, otherwise we run into a two's complement problem, causing this to fail with -2 and 2.0
+#if NETFRAMEWORK
+            long k = MathHelper.SingleToInt32BitsEx(a);
+            long l = MathHelper.SingleToInt32BitsEx(b);
+#else
             long k = BitConverter.SingleToInt32Bits(a);
+            long l = BitConverter.SingleToInt32Bits(b);
+#endif
+
             if (k < 0)
             {
                 k = int.MinValue - k;
             }
 
-            long l = BitConverter.SingleToInt32Bits(b);
             if (l < 0)
             {
                 l = int.MinValue - l;
@@ -1029,6 +1036,24 @@ namespace OpenTK.Mathematics
 
             var intDiff = Math.Abs(k - l);
             return intDiff <= 1 << maxDeltaBits;
+        }
+
+        /// <summary>
+        /// Converts the specified single-precision floating point number to a 32-bit signed integer.
+        /// </summary>
+        /// <param name="value">The number to convert.</param>
+        /// <returns>A 32-bit signed integer whose bits are identical to <paramref name="value"/>.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static unsafe int SingleToInt32BitsEx(this float value)
+        {
+            //// Workaround for https://github.com/dotnet/runtime/issues/11413
+            //if (System.Runtime.Intrinsics.X86.Sse2.IsSupported)
+            //{
+            //    Vector128<int> vec = Vector128.CreateScalarUnsafe(value).AsInt32();
+            //    return Sse2.ConvertToInt32(vec);
+            //}
+
+            return *((int*)&value);
         }
 
         /// <summary>
@@ -1375,7 +1400,9 @@ namespace OpenTK.Mathematics
             return CultureInfo.CurrentCulture.TextInfo.ListSeparator;
         }
 
+#if !NETFRAMEWORK
         [DoesNotReturn]
+#endif
         internal static void ThrowOutOfRangeException(string message)
         {
             throw new IndexOutOfRangeException(message);

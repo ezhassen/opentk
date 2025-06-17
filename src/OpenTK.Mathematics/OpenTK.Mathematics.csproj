@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net9.0;net6.0;netstandard2.1;net462</TargetFrameworks>
+    <TargetFrameworks>net9.0;net8.0;net6.0;netstandard2.1;net462</TargetFrameworks>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Deterministic>true</Deterministic>
     <RootNamespace>OpenTK.Mathematics</RootNamespace>
@@ -16,6 +16,14 @@
   <ItemGroup>
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
   </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net462'">
+    <PackageReference Include="Microsoft.Bcl.HashCode" Version="6.0.0" />
+    <PackageReference Include="System.Runtime.Extensions" Version="4.3.1" />
+    <PackageReference Include="Microsoft.Bcl.Numerics" Version="9.0.6" />
+    <PackageReference Include="System.ValueTuple" Version="4.6.1" />
+  </ItemGroup>
+  
   
   <Import Project="..\..\props\common.props" />
   <Import Project="..\..\props\nuget-common.props" />

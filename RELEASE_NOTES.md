@@ -1,3 +1,6 @@
+## 4.9.9
+Added support for .net 6, 8 and net462(not all projects) 
+
 ## 4.9.8
 Use net9.0 instead of netcoreapp3.1 (For Custom Build)
 

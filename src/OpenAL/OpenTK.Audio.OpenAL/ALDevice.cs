@@ -31,10 +31,19 @@ namespace OpenTK.Audio.OpenAL
             return obj is ALDevice device && Equals(device);
         }
 
+#if NETFRAMEWORK
+        public bool Equals(ALDevice other)
+        {
+            return Handle.Equals(other.Handle);
+        }
+
+#else
         public bool Equals([AllowNull] ALDevice other)
         {
             return Handle.Equals(other.Handle);
         }
+
+#endif
 
         public override int GetHashCode()
         {

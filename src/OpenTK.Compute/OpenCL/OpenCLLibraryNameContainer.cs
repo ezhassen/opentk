@@ -1,5 +1,7 @@
 using System;
+#if !NETFRAMEWORK
 using System.Runtime.InteropServices;
+#endif
 
 namespace OpenTK.Compute.OpenCL
 {
@@ -23,6 +25,16 @@ namespace OpenTK.Compute.OpenCL
 
         public string GetLibraryName()
         {
+#if NETFRAMEWORK
+            if (OverridePath != null)
+            {
+                return OverridePath;
+            }
+            else
+            {
+                return Windows;
+            }
+#else
             if (OverridePath != null)
             {
                 return OverridePath;
@@ -51,6 +63,8 @@ namespace OpenTK.Compute.OpenCL
             {
                 throw new NotSupportedException($"The library name couldn't be resolved for the given platform ('{RuntimeInformation.OSDescription}').");
             }
+#endif
+
         }
     }
 }

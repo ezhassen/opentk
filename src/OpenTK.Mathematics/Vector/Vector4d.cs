@@ -1048,7 +1048,11 @@ namespace OpenTK.Mathematics
             }
             else
             {
+#if NETFRAMEWORK
+                double theta = Math.Acos(MathEx.Clamp(cosTheta, -1, 1));
+#else
                 double theta = Math.Acos(Math.Clamp(cosTheta, -1, 1));
+#endif
                 // We use the fact that:
                 // sin(θ) = sqrt(1 - cos(θ)^2)
                 // to avoid doing sin(θ) which is slower than sqrt.

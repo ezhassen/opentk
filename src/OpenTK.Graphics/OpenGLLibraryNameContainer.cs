@@ -24,10 +24,14 @@ namespace OpenTK.Graphics.GL
 
         public static string GetLibraryNameForCurrentPlatform()
         {
+#if NETFRAMEWORK
+            return Windows;
+#else
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) return Linux;
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) return Windows;
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) return MacOS;
             else return "unknown platform";
+#endif
         }
     }
 }

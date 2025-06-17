@@ -24,7 +24,11 @@ namespace OpenTK.Compute.OpenCL
 
         public override int GetHashCode()
         {
+#if NETFRAMEWORK
+            return Handle.GetHashCode();
+#else
             return HashCode.Combine(Handle);
+#endif
         }
 
         public static bool operator ==(CLPlatform left, CLPlatform right)

@@ -62,6 +62,7 @@ namespace OpenTK.Audio.OpenAL
         public static extern ALContext CreateContext([In] ALDevice device, [In] int[] attributeList);
         // ALC_API ALCcontext *    ALC_APIENTRY alcCreateContext( ALCdevice *device, const ALCint* attrlist );
 
+#if !NETFRAMEWORK
         /// <summary>This function creates a context using a specified device.</summary>
         /// <param name="device">A pointer to a device.</param>
         /// <param name="attributeList">A zero terminated span of a set of attributes: ALC_FREQUENCY, ALC_MONO_SOURCES, ALC_REFRESH, ALC_STEREO_SOURCES, ALC_SYNC.</param>
@@ -71,6 +72,7 @@ namespace OpenTK.Audio.OpenAL
         {
             return CreateContext(device, ref attributeList[0]);
         }
+#endif
 
         /// <summary>This function creates a context using a specified device.</summary>
         /// <param name="device">A pointer to a device.</param>

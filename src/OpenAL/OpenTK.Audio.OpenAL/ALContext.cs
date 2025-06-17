@@ -28,10 +28,17 @@ namespace OpenTK.Audio.OpenAL
             return obj is ALContext handle && Equals(handle);
         }
 
+#if NETFRAMEWORK
+        public bool Equals(ALContext other)
+        {
+            return Handle.Equals(other.Handle);
+        }
+#else
         public bool Equals([AllowNull] ALContext other)
         {
             return Handle.Equals(other.Handle);
         }
+#endif
 
         public override int GetHashCode()
         {

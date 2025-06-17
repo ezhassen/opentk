@@ -16,6 +16,26 @@ namespace OpenTK.Windowing.GraphicsLibraryFramework
 
         static GLFWNative()
         {
+#if NETFRAMEWORK || NETSTANDARD
+            // For .NET Framework, we use AppDomain.CurrentDomain.AssemblyResolve
+            AppDomain.CurrentDomain.AssemblyResolve += (sender, args) =>
+            {
+                if (args.Name.StartsWith(typeof(GLFWNative).Assembly.GetName().Name))
+                {
+                    string libName = LibraryName;
+                    try
+                    {
+                        LoadLibrary(libName);
+                    }
+                    catch (DllNotFoundException)
+                    {
+                        throw new DllNotFoundException(
+                            $"Could not load the dll '{libName}'.");
+                    }
+                }
+                return null;
+            };
+#else
             // Register DllImport resolver so that the correct dynamic library is loaded on all platforms.
             // On net472, we rely on Mono's DllMap for this. See the .dll.config file.
             NativeLibrary.SetDllImportResolver(typeof(GLFWNative).Assembly, (name, assembly, path) =>
@@ -27,8 +47,10 @@ namespace OpenTK.Windowing.GraphicsLibraryFramework
 
                 return LoadLibrary("glfw", new Version(3, 3), assembly, path);
             });
+#endif
         }
 
+#if NET
         private static IntPtr LoadLibrary(string libraryName, Version version, Assembly assembly, DllImportSearchPath? searchPath)
         {
             IEnumerable<string> GetNextVersion()
@@ -69,6 +91,12 @@ namespace OpenTK.Windowing.GraphicsLibraryFramework
             }
             return NativeLibrary.Load(libraryName, assembly, searchPath);
         }
+#endif
+
+#if NETFRAMEWORK || NETSTANDARD
+        [DllImport("kernel32.dll")]
+        private static extern IntPtr LoadLibrary(string dllToLoad);
+#endif
 
 #pragma warning disable IDE1006 // Naming Styles
 
