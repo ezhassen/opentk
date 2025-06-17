@@ -992,6 +992,7 @@ namespace OpenTK.Windowing.Desktop
             // where glfwFocusWindow makes the window visible on macOS even without calling glfwShowWindow.
             // This is here to make sure the window actually starts hidden.
             // - Noggin_bops 2024-11-25
+#if !NETFRAMEWORK
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
                 if (_isVisible == false)
@@ -999,6 +1000,7 @@ namespace OpenTK.Windowing.Desktop
                     _isFocused = false;
                 }
             }
+#endif
             if (_isFocused)
             {
                 Focus();
@@ -1427,7 +1429,7 @@ namespace OpenTK.Windowing.Desktop
 
                 for (var i = 0; i < count; i++)
                 {
-                    arrayOfPaths[i] = Marshal.PtrToStringUTF8((IntPtr)paths[i]);
+                    arrayOfPaths[i] = Helper.PtrToStringUTF8((IntPtr)paths[i]);
                 }
 
                 OnFileDrop(new FileDropEventArgs(arrayOfPaths));

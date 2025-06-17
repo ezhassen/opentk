@@ -53,6 +53,9 @@ namespace OpenTK.Windowing.Desktop
         /// </remarks>
         public static float GetPlatformDefaultDpi()
         {
+#if NETFRAMEWORK
+            return 96f;
+#else
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
                 return 72f;
@@ -61,6 +64,7 @@ namespace OpenTK.Windowing.Desktop
             {
                 return 96f;
             }
+#endif
         }
 
         private static int GetRectangleIntersectionArea(Box2i a, Box2i b)

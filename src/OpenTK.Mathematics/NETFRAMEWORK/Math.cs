@@ -93,8 +93,8 @@ namespace System
             return value;
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [CLSCompliant(false)]
+       // [MethodImpl(MethodImplOptions.AggressiveInlining)]
+       // [CLSCompliant(false)]
         public static sbyte Abs(sbyte value)
         {
             if (value < 0)
@@ -108,8 +108,8 @@ namespace System
             return value;
         }
 
-        //[DoesNotReturn]
-        //[StackTraceHidden]
+        // [DoesNotReturn]
+        // [StackTraceHidden]
         private static void ThrowAbsOverflow()
         {
             throw new OverflowException("AbsOverflow");

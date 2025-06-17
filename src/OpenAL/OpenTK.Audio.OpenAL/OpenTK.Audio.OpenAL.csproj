@@ -1,10 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net9.0;net8.0;net6.0</TargetFrameworks>
+    <TargetFrameworks>net9.0;net8.0;net6.0;netstandard2.1;net462</TargetFrameworks>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Deterministic>true</Deterministic>
     <LangVersion>latest</LangVersion>
     <PackageId>OpenTK.Audio.OpenAL</PackageId>
+    <NoWarn>$(NoWarn);CS1574;CS1591</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -22,6 +23,10 @@
     <ProjectReference Include="$(OpenTKSolutionRoot)\src\OpenTK.Mathematics\OpenTK.Mathematics.csproj" />
   </ItemGroup>
 
+  <ItemGroup Condition="'$(TargetFramework)' == 'net462'">
+    <PackageReference Include="System.Memory" Version="4.6.3" />
+  </ItemGroup>
+  
   <Import Project="..\..\..\props\common.props" />
   <Import Project="$(OpenTKSolutionRoot)\props\nuget-common.props" />
   <Import Project="$(OpenTKSolutionRoot)\props\stylecop.props" />

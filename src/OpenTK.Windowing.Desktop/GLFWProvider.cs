@@ -76,25 +76,26 @@ namespace OpenTK.Windowing.Desktop
         {
             if (CheckForMainThread)
             {
-                if (_mainThread == null)
-                {
-                    if (Thread.CurrentThread.IsBackground == false &&
+                if (_mainThread == null && Thread.CurrentThread.IsBackground == false &&
                         Thread.CurrentThread.IsThreadPoolThread == false &&
                         Thread.CurrentThread.IsAlive)
+                {
+#pragma warning disable CS8602 //Dereference of a possibly null reference
+#pragma warning disable CS8600 //Converting null literal or possible null value to non-nullable type.
+                    MethodInfo correctEntryMethod = Assembly.GetEntryAssembly().EntryPoint;
+                    StackTrace trace = new StackTrace();
+                    StackFrame[] frames = trace.GetFrames();
+                    for (int i = frames.Length - 1; i >= 0; i--)
                     {
-                        MethodInfo correctEntryMethod = Assembly.GetEntryAssembly().EntryPoint;
-                        StackTrace trace = new StackTrace();
-                        StackFrame[] frames = trace.GetFrames();
-                        for (int i = frames.Length - 1; i >= 0; i--)
+                        MethodBase method = frames[i].GetMethod();
+                        if (correctEntryMethod == method)
                         {
-                            MethodBase method = frames[i].GetMethod();
-                            if (correctEntryMethod == method)
-                            {
-                                _mainThread = Thread.CurrentThread;
-                                break;
-                            }
+                            _mainThread = Thread.CurrentThread;
+                            break;
                         }
                     }
+#pragma warning restore CS8602 //Dereference of a possibly null reference
+#pragma warning restore CS8600 //Converting null literal or possible null value to non-nullable type.
                 }
 
                 if (_mainThread?.ManagedThreadId != Thread.CurrentThread.ManagedThreadId)

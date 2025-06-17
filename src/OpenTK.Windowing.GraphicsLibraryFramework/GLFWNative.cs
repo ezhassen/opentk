@@ -1,8 +1,9 @@
 using System;
+using System.Runtime.InteropServices;
+#if NET
 using System.Collections.Generic;
 using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+#endif
 
 namespace OpenTK.Windowing.GraphicsLibraryFramework
 {

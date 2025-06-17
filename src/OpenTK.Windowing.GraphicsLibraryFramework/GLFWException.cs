@@ -8,7 +8,9 @@
 //
 
 using System;
+#if NETFRAMEWORK
 using System.Runtime.Serialization;
+#endif
 
 namespace OpenTK.Windowing.GraphicsLibraryFramework
 {
@@ -61,7 +63,7 @@ namespace OpenTK.Windowing.GraphicsLibraryFramework
             : base(message, innerException)
         {
         }
-
+#if NETFRAMEWORK
         /// <summary>
         /// Initializes a new instance of the <see cref="GLFWException"/> class with the specified context
         /// and the serialization information.
@@ -74,5 +76,6 @@ namespace OpenTK.Windowing.GraphicsLibraryFramework
             : base(info, context)
         {
         }
+#endif
     }
 }

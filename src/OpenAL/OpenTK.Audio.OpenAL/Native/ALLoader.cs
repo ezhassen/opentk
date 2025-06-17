@@ -28,6 +28,40 @@ namespace OpenTK.Audio.OpenAL
             RegisterDllResolver();
         }
 
+#if NETFRAMEWORK || NETSTANDARD
+
+        internal static void RegisterDllResolver()
+        {
+            if (RegisteredResolver == false)
+            {
+                // For .NET Framework, we use AppDomain.CurrentDomain.AssemblyResolve
+                AppDomain.CurrentDomain.AssemblyResolve += (sender, args) =>
+                {
+                    if (args.Name.StartsWith(typeof(ALLoader).Assembly.GetName().Name))
+                    {
+                        string libName = ALLibraryNameContainer.GetLibraryName();
+                        try
+                        {
+                            LoadLibrary(libName);
+                        }
+                        catch (DllNotFoundException)
+                        {
+                            throw new DllNotFoundException(
+                                $"Could not load the dll '{libName}'.");
+                        }
+                    }
+                    return null;
+                };
+                RegisteredResolver = true;
+            }
+        }
+
+        [DllImport("kernel32.dll")]
+        private static extern IntPtr LoadLibrary(string dllToLoad);
+#endif
+
+#if NET
+
         internal static void RegisterDllResolver()
         {
             if (RegisteredResolver == false)
@@ -55,5 +89,7 @@ namespace OpenTK.Audio.OpenAL
                 return NativeLibrary.Load(libraryName, assembly, searchPath);
             }
         }
+#endif
+
     }
 }

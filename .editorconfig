@@ -1,4 +1,4 @@
-root=true
+﻿[*.cs]
 
 [*.{cs,fsx}]
 indent_style=space

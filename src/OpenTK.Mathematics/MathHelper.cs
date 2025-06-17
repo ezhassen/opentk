@@ -1047,11 +1047,11 @@ namespace OpenTK.Mathematics
         public static unsafe int SingleToInt32BitsEx(this float value)
         {
             //// Workaround for https://github.com/dotnet/runtime/issues/11413
-            //if (System.Runtime.Intrinsics.X86.Sse2.IsSupported)
-            //{
+            // if (System.Runtime.Intrinsics.X86.Sse2.IsSupported)
+            // {
             //    Vector128<int> vec = Vector128.CreateScalarUnsafe(value).AsInt32();
             //    return Sse2.ConvertToInt32(vec);
-            //}
+            // }
 
             return *((int*)&value);
         }

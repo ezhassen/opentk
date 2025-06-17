@@ -1,11 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net9.0;net8.0;net6.0</TargetFrameworks>
+    <TargetFrameworks>net9.0;net8.0;net6.0;netstandard2.1;net462</TargetFrameworks>
     <RootNamespace>OpenTK.Windowing.Desktop</RootNamespace>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>../../OpenTK.snk</AssemblyOriginatorKeyFile>
     <PackageId>OpenTKEzz.Windowing.Desktop</PackageId>
+    <NoWarn>$(NoWarn);CS1574;CS1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

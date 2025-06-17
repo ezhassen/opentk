@@ -54,7 +54,12 @@ namespace OpenTK.Audio.OpenAL
             {
                 return OverridePath;
             }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Create("ANDROID")))
+
+#if NETFRAMEWORK
+            return Windows;
+#else
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Create("ANDROID")))
             {
                 return Android;
             }
@@ -62,10 +67,12 @@ namespace OpenTK.Audio.OpenAL
             {
                 return Linux;
             }
+#if !NETSTANDARD
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.FreeBSD))
             {
                 return Linux;
             }
+#endif
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 return Windows;
@@ -82,6 +89,7 @@ namespace OpenTK.Audio.OpenAL
             {
                 throw new NotSupportedException($"The library name couldn't be resolved for the given platform ('{RuntimeInformation.OSDescription}').");
             }
+#endif
         }
     }
 }

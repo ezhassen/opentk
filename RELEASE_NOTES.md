@@ -1,3 +1,6 @@
+## 4.9.10
+Added support netstandard2.1 and net462 (in all projects)
+
 ## 4.9.9
 Added support for .net 6, 8 and net462(not all projects) 
 

@@ -1,20 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-      <TargetFrameworks>net9.0;net8.0;net6.0</TargetFrameworks>
-      <RootNamespace>OpenTK.Windowing.GraphicsLibraryFramework</RootNamespace>
-      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-      <SignAssembly>true</SignAssembly>
-      <AssemblyOriginatorKeyFile>../../OpenTK.snk</AssemblyOriginatorKeyFile>
-      <PackageId>OpenTKEzz.Windowing.GraphicsLibraryFramework</PackageId>
-    </PropertyGroup>
-    
-    <ItemGroup>
-      <ProjectReference Include="..\OpenTK.Core\OpenTK.Core.csproj" />
-      <ProjectReference Include="..\OpenTK.Windowing.Common\OpenTK.Windowing.Common.csproj" />
-      <PackageReference Include="OpenTK.redist.glfw" Version="3.4.0.44" />
-    </ItemGroup>
+  <PropertyGroup>
+    <TargetFrameworks>net9.0;net8.0;net6.0;netstandard2.1;net462</TargetFrameworks>
+    <RootNamespace>OpenTK.Windowing.GraphicsLibraryFramework</RootNamespace>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>../../OpenTK.snk</AssemblyOriginatorKeyFile>
+    <PackageId>OpenTKEzz.Windowing.GraphicsLibraryFramework</PackageId>
+    <NoWarn>$(NoWarn);CS1574;CS1591</NoWarn>
+  </PropertyGroup>
 
-    <Import Project="..\..\props\common.props" />
-    <Import Project="..\..\props\nuget-common.props" />
-    <Import Project="..\..\props\stylecop.props" />
+  <ItemGroup>
+    <ProjectReference Include="..\OpenTK.Core\OpenTK.Core.csproj" />
+    <ProjectReference Include="..\OpenTK.Windowing.Common\OpenTK.Windowing.Common.csproj" />
+    <PackageReference Include="OpenTK.redist.glfw" Version="3.4.0.44" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net462'">
+    <PackageReference Include="System.Memory" Version="4.6.3" />
+  </ItemGroup>
+
+  <Import Project="..\..\props\common.props" />
+  <Import Project="..\..\props\nuget-common.props" />
+  <Import Project="..\..\props\stylecop.props" />
 </Project>
